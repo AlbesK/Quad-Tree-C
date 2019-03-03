@@ -63,7 +63,7 @@ struct quad* newNode(int data, double s, double x, double y)
     // Assign data to this quad, s size of square, centre point of it
     // b as NULL for not storing a pointer to a body yet, false for divided as it has not subdivided yet.
     quad->data = data;
-    quad->s = s; //Size of square halfed each time is called with same size for each but new coordinates for their centres
+    quad->s = s; 
     quad->centre.x = x; quad->centre.y = y;
     quad->b = NULL;
     quad->divided = false;
@@ -88,7 +88,7 @@ void display_tree(struct quad* nd)
     // Display the data of the node
     printf(" %*c(%d) \n %*c[%f, %f] \n %*c[%f]\n\n",50, ' ', nd->data, 42,' ', nd->centre.x, nd->centre.y, 47, ' ', nd->s);
     
-    // Display data for each node plus some formating it looks better
+    // Display data for each node plus some formating so it looks better
     if(nd->NE != NULL)
         printf("%*c|NE:%d|  ",34,' ',nd->NE->data);
     if(nd->SE != NULL)
