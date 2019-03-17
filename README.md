@@ -9,6 +9,8 @@ Dynamic memory handlement to segment 2D space for bodies occupying it is also us
 
 ![alt text](https://github.com/AlbesK/Quad-Tree-C/blob/master/100_particles_bottomup_Quad_Tree.png)
 
+Image was produced with Pythons matplotlib after saving the data in csv format.
+
 Supports:
 
 # insert
@@ -30,4 +32,12 @@ Displays Tree in in-order recursion.
 
 Displays Tree in Breadth First travel using dynamic queue made by 2 single linkedLists.
 
-Plus a bunch more functions or more in the near future!
+# xyt_data_particles
+
+Saves x, y coordinates of Particles plust time taken to build the quad tree.
+
+# xy_trees
+
+Saves x, y coordinates of centres of nodes inside quad trees plus the size of the node.
+
+Plus a bunch more functions or more in the near future!!
