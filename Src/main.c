@@ -23,8 +23,7 @@ struct point
 struct body 
 {
     struct point pos; // Position
-    double mass;   // Mass
-    double charge;  // Charge
+    // perhaps putting mass etc here
 };
 
 /*
@@ -233,12 +232,12 @@ void xyt_data_particles(struct body* bodies, int* N_PARTICLES, double t){
     f = fopen("/home/albes/Desktop/bodiestd.txt", "w"); /* open the file for writing*/
     printf("Writting...\n");
     /* write 10 lines of text into the file stream*/    
-    fprintf(f, "N,X,Y,M,C,T\n");
+    fprintf(f, "N,X,Y,T\n");
 
     for(int i = 0; i < *N_PARTICLES;i++){
-        fprintf (f, "%d,%f,%f,%f,%f\n", i, bodies[i].pos.x, bodies[i].pos.y, bodies[i].mass, bodies[i].charge);
+        fprintf (f, "%d,%f,%f\n", i, bodies[i].pos.x, bodies[i].pos.y);
     }
-    fprintf(f,",,,,,%f",t);
+    fprintf(f,",,,%f",t);
 
     /* close the file*/  
     fclose (f);
@@ -388,20 +387,15 @@ int main() {
 
     for (int i=0; i < N_PARTICLES; i++){
 
-            double mass = 5 * ((double) rand() / (double) RAND_MAX ); // 1,5
-            double charge = 10 * ((double) rand() / (double) RAND_MAX ) - 5; // -5, 5
             struct point p = {.x = 100 * ((double) rand() / (double) RAND_MAX ) - 50, // -50, 50
             .y = 100 * ((double) rand() / (double) RAND_MAX ) - 50};
 
-            struct body b = {.mass = mass, .charge = charge, .pos = p };
+            struct body b = {.pos = p };
 
             bodies[i] = b;
             // printf("%c:[%f], %c:[%f] \n", x[0], bodies[i].pos.x, x[1], bodies[i].pos.y );
     
     }
-
-
-
 
     struct quad *root = newNode(0, 100, 0, 0); //Size of s=100 and pint of reference being (0,0) equiv. to (x_root, y_root)  
     //printf("Root square size is: %f\n", root->s);
