@@ -7,6 +7,8 @@ It was quite tricky to find resources online for quad-trees written purely in C 
 
 Dynamic memory handlement to segment 2D space for bodies occupying it is also used with appropriate functions of allocating and deallocating the heap memory.
 
+![alt text](https://github.com/AlbesK/Quad-Tree-C/blob/master/100_particles_bottomup_Quad_Tree.png)
+
 Supports:
 
 # insert
