@@ -18,7 +18,7 @@ struct point
 };
 
 /*
-    Body structure, having coordinates in 2D, mass and charge.
+    Body structure, having coordinates in 2D.
 */
 struct body 
 {
@@ -106,7 +106,7 @@ void display_tree(struct quad* nd)
 }
 
 /*
-    Deconstruct quad tree (postorder)
+    Deconstruct quad tree (postorder) also de-allocates memory 
 */ 
 void deconstruct_tree(struct quad* root)
 {
@@ -129,7 +129,7 @@ void subdivide(struct quad* nd, int* track){
     if(nd == NULL){ // If there is no node do not subdive. (safety measure)
         return;
     }
-    // printf("Subdivide call at: %i \n", nd->data);
+
     // Call newNode function for each child node that was Null of the node at hand and assign a memory block of size (struct quad)
     // -n is assigned here if the node is a 'twig' meaning it is not a 'leaf' for now empty cells are also -n where n integers that
     // that are unique for each quad.
@@ -152,8 +152,7 @@ void subdivide(struct quad* nd, int* track){
     
       
     nd->divided = true; // The node subdivided ( safety for not subdividing again the same node )
-    *track = *track-4;
-    // printf("Track is: %i\n", *track);
+    *track = *track-4; // track gets last value so it can iterate through without repeat
 
 }
 
@@ -183,7 +182,6 @@ int insert(struct quad* nd, struct body* b, int *index, int* track){
     if(nd->b==NULL){ // If there is no pointer to body assign it (Essentially capacity is kept at 1 here with this method)
         nd->b = b;
         nd->data = *index; //Assign the number of the body from the Bodies array, this is for getting back with data where the body is stored as a leaf
-        // printf("Pointer to %i\n", nd->data);
         return 0; // Found so return 0 so we can exit the recursion
     } 
     else{
@@ -201,13 +199,18 @@ int insert(struct quad* nd, struct body* b, int *index, int* track){
         }
     }
 
-    return insert(nd->NE, b, index, track)|| // Since insert is an int function, the return statement here returns 1 or 0 if 
-    insert(nd->SE, b, index, track)||  // a node is found to point the body and thus save the body at. So for example if we
-    insert(nd->SW, b, index, track)|| // have 2 bodies and the first one is always saved at root ( being empthy and not divided)
-    insert(nd->NW, b, index, track); // then the second Body 1 if it is at NW subcell after division when it goes to the return state-
-        // -ment it will go through the OR terms as the contain function will not let the first 3 OR terms ( being insert(nd->NE,...) || ... 
-        // to insert(nd->SW,...) and pick the insert(nd->NW,...) to assign. The same process is repeated every time the function calls itself
-        // and checks for where to put the body.
+    // Since insert is an int function, the return statement here returns 0 if 
+    // a node is found to point the body and thus save the body at. So for example if we
+    // have 2 bodies and the first one is always saved at root ( being empty and not divided)
+    // then the second Body 1 if it is at NW subcell after division when it goes to the return state-
+    // -ment it will go through the OR terms as the contain function will not let the first 3 OR terms 
+    //( being insert(nd->NE,...) || ...  to insert(nd->SW,...) and pick the insert(nd->NW,...) to assign. 
+    //The same process is repeated every time the function calls itself and checks for where to put the body.
+
+    return insert(nd->NE, b, index, track)||  
+    insert(nd->SE, b, index, track)||  
+    insert(nd->SW, b, index, track)||
+    insert(nd->NW, b, index, track); 
 }
 
 /*
@@ -219,7 +222,7 @@ struct quad* Search(struct quad* root, int data) {
 	if(root == NULL){return NULL;}
 
 	printf("%i \n",root->data); // Print data
-    if(root->data == data){return root;}
+    if(root->data == data){return root;} // Found so return quad node
 	
     Search(root->NW, data);     // Visit NW subtree
 	Search(root->SW, data);    // Visit SW subtree
@@ -231,13 +234,13 @@ void xyt_data_particles(struct body* bodies, int* N_PARTICLES, double t){
     FILE * f; 
     f = fopen("/home/albes/Desktop/bodiestd.txt", "w"); /* open the file for writing*/
     printf("Writting...\n");
-    /* write 10 lines of text into the file stream*/    
+    /* write 4 lines of text into the file stream*/    
     fprintf(f, "N,X,Y,T\n");
 
     for(int i = 0; i < *N_PARTICLES;i++){
         fprintf (f, "%d,%f,%f\n", i, bodies[i].pos.x, bodies[i].pos.y);
     }
-    fprintf(f,",,,%f",t);
+    fprintf(f,",,,%f",t); // Comas to move to the last column
 
     /* close the file*/  
     fclose (f);
@@ -400,11 +403,14 @@ int main() {
     struct quad *root = newNode(0, 100, 0, 0); //Size of s=100 and pint of reference being (0,0) equiv. to (x_root, y_root)  
     //printf("Root square size is: %f\n", root->s);
     int track = 0;
+
+    // Build up the tree
     ts = clock(); // Start timer
     for(int i=0; i<N_PARTICLES; i++){
         insert(root, &bodies[i], &i, &track);
     }
     te = clock(); // End timer
+
     double d = (double)(te-ts)/CLOCKS_PER_SEC; // Bottom-up tree construction time
     
     // display_tree(root);
@@ -423,7 +429,8 @@ int main() {
         printf("Continuing\n");   
     }
 
-    levelorder(root);
+    levelorder(root); // Breadth First traversal print in terminal
+
     deconstruct_tree(root);
     free(bodies);
 
