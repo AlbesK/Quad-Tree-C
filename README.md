@@ -11,14 +11,14 @@ Dynamic memory handlement to segment 2D space for bodies occupying it is also us
 
 Image was produced with Pythons matplotlib after saving the data in csv format.
 
-Supports:
+Supports: ( so far )
 
 # insert
 Inserting new bodies recursively from a dynamically allocated array of them. 
 
 It also takes care of moving the body occupied by the parent node when a new body is assigned inside the nodes boundary and moves both down the tree to new leaf nodes.
 
-It also uses unique identifiers for the data variable for each node, with twigs referring to ones being empty or that had more than 2 particles with negative integers, 0 for root and all positive values correspond to the same index of the respective body it is pointing at
+It also uses unique identifiers for the data variable for each node, with twigs referring to ones being empty or that had more than 2 particles with negative integers, 0 for root and all positive values correspond to the same index of the respective body it is pointing at.
 
 # search
 
@@ -34,10 +34,9 @@ Displays Tree in Breadth First travel using dynamic queue made by 2 single linke
 
 # xyt_data_particles
 
-Saves x, y coordinates of Particles plust time taken to build the quad tree.
+Saves x, y coordinates of Particles plus time taken to build the quad tree. Change path for it to work.
 
 # xy_trees
 
-Saves x, y coordinates of centres of nodes inside quad trees plus the size of the node.
+Saves x, y coordinates of centres of nodes inside quad trees plus the size of the node. Change path for it to work.
 
-Plus a bunch more functions or more in the near future!!
