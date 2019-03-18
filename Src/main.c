@@ -277,6 +277,9 @@ void xy_trees(struct quad* nd){
     printf("Closed file.\n");
 }
 
+/*
+    Linked list datastructure pointing at quad nodes
+*/
 struct linkedList
 {
   struct quad* data;
@@ -284,6 +287,9 @@ struct linkedList
 
 };
 
+/*
+    Queue Datastructure out of 2 single linked lists
+*/
 struct linkedList* begin;
 struct linkedList* end;
 
@@ -310,9 +316,9 @@ void enqueue(struct quad* nd)
     end = temp;
 }
 
- /*
+/*
     Pop element from queue and free its memory
- */
+*/
 void dequeue()
 {
     struct linkedList* temp = begin;
