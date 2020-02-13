@@ -7,7 +7,7 @@ It was quite tricky to find resources online for quad-trees written purely in C 
 
 Dynamic memory handlement to segment 2D space for bodies occupying it is also used with appropriate functions of allocating and deallocating the heap memory.
 
-![alt text](https://github.com/AlbesK/Quad-Tree-C/blob/master/100_particles_bottomup_Quad_Tree.png)
+![100_particles_bottomup_Quad_Tree](https://github.com/AlbesK/Quad-Tree-C/blob/master/100_particles_bottomup_Quad_Tree.png)
 
 Image was produced with Pythons matplotlib after saving the data in csv format.
 
@@ -32,7 +32,7 @@ Displays Tree in in-order recursion.
 
 Displays Tree in Breadth First travel using dynamic queue made by 2 single linkedLists.
 
-(https://github.com/AlbesK/Quad-Tree-C/blob/master/queue.png)
+![queue](https://github.com/AlbesK/Quad-Tree-C/blob/master/queue.png)
 
 # xyt_data_particles
 
