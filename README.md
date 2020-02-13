@@ -32,6 +32,8 @@ Displays Tree in in-order recursion.
 
 Displays Tree in Breadth First travel using dynamic queue made by 2 single linkedLists.
 
+(https://github.com/AlbesK/Quad-Tree-C/blob/master/queue.png)
+
 # xyt_data_particles
 
 Saves x, y coordinates of Particles plus time taken to build the quad tree. Change path for it to work.
