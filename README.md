@@ -34,6 +34,8 @@ Displays Tree in Breadth First travel using dynamic queue made by 2 single linke
 
 ![queue](https://github.com/AlbesK/Quad-Tree-C/blob/master/queue.png)
 
+B is the beginning of the list and E is the end of it. A) The first element is enqueued in the queue being 1 from example in Fig.\ref{fig:binarytree} then in B) its children are enqueued being 2 and 3. After popping off 1 by dequeueing it B points at 2 thus we enque by moving E 4 and 5 in C) then finally in D) after popping off 2 and moving B at 3 its childrend are enqueued with E now pointing at 7.
+
 # xyt_data_particles
 
 Saves x, y coordinates of Particles plus time taken to build the quad tree. Change path for it to work.
