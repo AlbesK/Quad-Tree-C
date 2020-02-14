@@ -30,7 +30,7 @@ Displays Tree in in-order recursion.
 
 # level_order (Breadth First)
 
-Displays Tree in Breadth First travel using dynamic queue made by 2 single linkedLists.
+Displays Tree in Breadth First travel using dynamic queue made by 2 single linkedLists (FIFO).
 
 <img src="https://github.com/AlbesK/Quad-Tree-C/blob/master/queue.png" alt="queue" width="80%"/>
 
