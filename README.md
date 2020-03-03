@@ -1,4 +1,6 @@
 # Quad-Tree-C
+ <img src="https://github.com/AlbesK/Quad-Tree-C/blob/master/quad.png" alt="Quad" width=60% style="float:right"/> 
+ 
 Simple node structure for a Quad tree in bottom-up approach written in C. 
 
 The functions inside the main.c were made as simple as possible, with plenty of comments. So far keeping them in one file but might make a makefile in the near future. 
@@ -7,7 +9,7 @@ It was quite tricky to find resources online for quad-trees written purely in C 
 
 Dynamic memory handlement to segment 2D space for bodies occupying it is also used with appropriate functions of allocating and deallocating the heap memory.
 
-![100_particles_bottomup_Quad_Tree](https://github.com/AlbesK/Quad-Tree-C/blob/master/100_particles_bottomup_Quad_Tree.png)
+<img src="https://github.com/AlbesK/Quad-Tree-C/blob/master/100_particles_bottomup_Quad_Tree.png" alt="100_particles_bottomup_Quad_Tree" width=80% class="center"/>
 
 Image was produced with Pythons matplotlib after saving the data in csv format.
 
@@ -27,7 +29,6 @@ Using the unique identifiers above one can search in in-order format the tree an
 # display_tree
 
 Displays Tree in in-order recursion.
-
 # level_order (Breadth First)
 
 Displays Tree in Breadth First travel using dynamic queue made by 2 single linkedLists (FIFO).
